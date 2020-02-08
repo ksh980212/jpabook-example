@@ -2,14 +2,10 @@ package com.jpabook.modeling.demo.domain.member;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import com.jpabook.modeling.demo.domain.BaseTimeEntity;
+import com.jpabook.modeling.demo.domain.common.Address;
 import com.jpabook.modeling.demo.domain.order.Order;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +29,9 @@ public class Member extends BaseTimeEntity {
     private String street;
 
     private String zipCode;
+
+    @Embedded
+    private Address address;
 
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();

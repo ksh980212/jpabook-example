@@ -1,14 +1,9 @@
 package com.jpabook.modeling.demo.domain.delivery;
 
+import com.jpabook.modeling.demo.domain.common.Address;
 import com.jpabook.modeling.demo.domain.order.Order;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class Delivery {
@@ -25,6 +20,9 @@ public class Delivery {
     private String street;
 
     private String zipCode;
+
+    @Embedded
+    private Address address;
 
     @Enumerated(EnumType.STRING)
     private DeliveryStatus status;
